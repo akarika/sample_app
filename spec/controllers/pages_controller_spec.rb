@@ -16,7 +16,7 @@ RSpec.describe PagesController, type: :controller do
     end
   it "should have the right title" do
     get :home
-    expect(response.body).to have_selector('title', :text => @base_title + '| Home')
+    expect(response.body).to have_title(@base_title +' | Home')
   end
 end
   describe "GET #contact" do
@@ -26,7 +26,7 @@ end
     end
       it "should have the right title" do
     get :contact
-    expect(response.body).to have_selector('title', :text => @base_title +'#{ | Contact}')
+    expect(response.body).to have_title(@base_title +' | Contact')
   end
   end
   describe "GET #contact" do
@@ -36,7 +36,7 @@ end
     end
       it "should have the right title" do
     get :about
-    expect(response.body).to have_selector('title', :text => @base_title + ' | About')
+    expect(response.body).to have_title(@base_title +' | About')
   end
   end
   describe "GET #help" do
@@ -46,7 +46,7 @@ end
   end
         it "should have the right title" do
     get :help
-    expect(response.body).to have_selector('title', :text => @base_title + ' | Help')
+    expect(response.body).to have_title(@base_title +' | Help')
   end
 end
 end
