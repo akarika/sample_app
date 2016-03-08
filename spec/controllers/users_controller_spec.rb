@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   render_views
-
+  before(:each) do
+    @base_title = 'Simple App du Tutoriel Ruby on Rails'
+  end
   describe "GET #new" do
     it "returns http success" do
       get :new
@@ -10,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
     end
     it "devrait avoir le titre adéquat" do
       get :new
-      expect(response.body).to have_title(@base_title +' | Inscription')
+      expect(response.body).to have_title(@base_title + ' | Inscription')
     end
 end
 end
