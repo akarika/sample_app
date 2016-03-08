@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/contact'=>'pages#contact'
   get '/help'=>'pages#help'
   get '/signup'=>'users#new'
+  get'/users/:id'=>'users#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
