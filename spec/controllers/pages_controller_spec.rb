@@ -36,7 +36,7 @@ end
     end
       it "should have the right title" do
     get :about
-    expect(response.body).to have_title(@base_title +' | About')
+    expect(response.body).to have_title(@base_title +' | À Propos')
   end
   end
   describe "GET #help" do
@@ -46,7 +46,7 @@ end
   end
         it "should have the right title" do
     get :help
-    expect(response.body).to have_title(@base_title +' | Help')
+    expect(response.body).to have_title(@base_title +' | Aide')
   end
 end
 end
