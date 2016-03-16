@@ -7,7 +7,11 @@
   <body>
     <%= render'layouts/header' %>
     <div class="container">
+      <% flash.each do |k,v| %>
+      <div class="alert alert-<%= k %>" role="alert"><%= v %></div>
+      <%end%>
       <%= yield %>
+
     </div>
     <%= render'layouts/footer' %>
     <%= debug(params)if Rails.env.development? %>

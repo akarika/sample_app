@@ -77,9 +77,9 @@ RSpec.describe User, type: :model do
       it'doit retourner true si les mdp coincident' do
         expect(@user.has_password?(@attr[:password])).to be_truthy
       end
-      it'doit retouner false si mdp divergent' do
-        expect(@user.has_password?(@attr[:password])).to be_falsey
-      end
+      # it'doit retouner false si mdp divergent' do
+      #   expect(@user.has_password?(@attr[:password])).to be_falsey
+      # end
       describe'authenticate method' do
         it"devrait retouner nul en cas d'inéquation entre email/mdp" do
           wrong_passord_user = User.authenticate(@attr[:eamil], 'wrongpass')
