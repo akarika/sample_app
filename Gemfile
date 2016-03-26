@@ -31,7 +31,13 @@ gem 'protected_attributes'
 gem 'capybara-webkit'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'rspec-rails', group: [:test, :development]
+gem 'rspec-rails'
+group :development do
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'will_paginate'
+end
+
 group :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem'byebug'

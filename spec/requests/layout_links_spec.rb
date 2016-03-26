@@ -30,8 +30,8 @@ RSpec.describe "LayoutLinks", type: :request do
     page.has_content?('Contact')
     click_link"Accueil"
     page.has_content?('Accueil')
-    click_link"S'inscrire !"
-    page.has_content?("S'inscrire !")
+    click_link"Inscrivez-vous"
+    page.has_content?("Inscrivez-vous")
     click_link"Aide"
     page.has_content?('Aide')
 end

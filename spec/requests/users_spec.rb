@@ -1,4 +1,4 @@
-# require 'rails_helper'
+require 'rails_helper'
 #
 # describe'Une inscription' do
 #   describe "ratée" do
@@ -30,4 +30,21 @@
 #       end.should change(User, :count).by(1)
 #     end
 #   end
-# end
+describe 'Attribut admin' do
+  before(:each) do
+    @user = User.create!(@attr)
+  end
+
+  it "devrait confirmer l'existence de `admin`" do
+    @user.should respond_to(:admin)
+  end
+
+  it "ne devrait pas être un administrateur par défaut" do
+    @user.should_not be_admin
+  end
+
+  it 'devrait pouvoir devenir un administrateur' do
+    @user.toggle!(:admin)
+    @user.should be_admin
+  end
+end

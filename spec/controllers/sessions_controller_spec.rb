@@ -39,23 +39,44 @@ RSpec.describe SessionsController, type: :controller do
         controller.should be_signed_in
       end
 
-      it "devrait rediriger vers la page d'affichage de l'utilisateur" do
-        subject { post :create, session: @attr }
-        expect(response).to redirect_to(user_path(@user))
+      #       it "devrait rediriger vers la page d'affichage de l'utilisateur" do
+      #         subject { post :create, session: @attr }
+      #         expect(response).to redirect_to(user_path(@user))
+      #       end
+      #       it "devrait rediriger vers la page d'affichage de l'utilisateur" do
+      #         subject { post :create, session: @attr }
+      #         expect(subject).to redirect_to(user_path(@user))
+      #       end
+      #     end
+      #     describe "DELETE 'destroy'" do
+      #
+      #   it "devrait déconnecter un utilisateur" do
+      #     test_sign_in(Factory.create(:user))
+      #     delete :destroy
+      #     controller.should_not be_signed_in
+      #     response.should redirect_to(root_path)
+      #   end
+    end
+    describe "GET 'edit'" do
+      before(:each) do
+        @user = FactoryGirl.build(:user)
+        test_sign_in(@user)
       end
-      it "devrait rediriger vers la page d'affichage de l'utilisateur" do
-        subject { post :create, session: @attr }
-        expect(subject).to redirect_to(user_path(@user))
+      it"devrait réussir" do
+        get :edit, id: @user
+        expect(response).to be_success
+      end
+      it'devrait avoir le bon titre ' do
+        get :edit, id: @user
+        expect(response).to have_title("Édition profil")
+      end
+      it "devrait avoir un lien pour changerl'image Gravatar" do
+        get :edit, id: @user
+        gravatar_url = 'http://gravatar.com/emails'
+        expect(response).to have_selector('a')
+        expect(response).to have_content('changer')
+        expect(response).to have_link('gravatar_url')
       end
     end
-    describe "DELETE 'destroy'" do
-
-  it "devrait déconnecter un utilisateur" do
-    test_sign_in(Factory.create(:user))
-    delete :destroy
-    controller.should_not be_signed_in
-    response.should redirect_to(root_path)
-  end
-end
   end
 end

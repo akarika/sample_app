@@ -1,12 +1,12 @@
 <% if@user.errors.any? %>
 <div id="error_explanation">
   <div class="alert alert-danger">
-  <h2><%= pluralize(@user.errors.count,"erreur")%>
-    ont empeché d'enregistrer votre inscription
+  <h2><%= pluralize(object.errors.count,"erreur")%>
+    ont empeché <%= object.class.to_s.underscore.humanize.downcase %>  d'enregistrer votre inscription :
   </h2></div>
   <p>Merci de corriger ces champs :</p>
   <ul>
-    <% @user.errors.full_messages.each do |msg| %>
+    <% object.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
     <%end%>
   </ul>
