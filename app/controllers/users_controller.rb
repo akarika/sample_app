@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: :destroy
   def new
-    @titre = 'Inscription'
-    @user = User.new
+    if signed_in?
+      redirect_to root_path
+    else
+      @titre = 'Inscription'
+      @user = User.new
+    end
   end
 
   def show
@@ -13,15 +17,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      flash[:success] = "Bienvenue dans l'application Exemple!"
-      redirect_to @user
-    else
-      @titre = 'Inscription'
-      render 'new'
-    end
+    if signed_in?
+      redirect_to root_path
+      @user = User.new(params[:user])
+      if @user.save
+        flash[:success] = "Bienvenue dans l'application Exemple!"
+        redirect_to @user
+      else
+        @titre = 'Inscription'
+        render 'new'
+      end
   end
+end
 
   def edit
     @user = User.find(params[:id])
@@ -49,24 +56,25 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "Utilisateur supprimé."
-    redirect_to users_path
+      User.find(params[:id]).destroy
+      flash[:success] = "Utilisateur supprimé."
+      redirect_to users_path
   end
+
 
   private
 
-  def authenticate
-    deny_acces unless signed_in?
-      # code
-    end
+def authenticate
+  deny_acces unless signed_in?
+    # code
+  end
 
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user)
-  end
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
-    #code
-  end
+def correct_user
+  @user = User.find(params[:id])
+  redirect_to(root_path) unless current_user?(@user)
+end
+
+def admin_user
+  redirect_to(root_path) unless current_user.admin?
+end
 end

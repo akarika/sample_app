@@ -1,22 +1,12 @@
 <h1>Edition du profil</h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-    <%= render "shared/error_messages", object: f.object  %>
-    <%= f.label :nom,"Nom"%>
-    <%= f.text_field :nom, class: "form-control" %><br/>
-    <%= f.label :email ,"Email"%>
-    <%= f.text_field :email,class:'form-control' %><br/>
-    <%= f.label :password , "Mot de passe"%>
-    <%= f.password_field :password,class: "form-control" %><br/>
-    <%= f.label :password_confirmation,"Confirmation de mot de passe" %>
-    <%= f.password_field :password_confirmation ,class: "form-control"%><br/>
-    <div class="action">
-      <%= f.submit "Update",class:"btn btn-primary"%></div>
-    <% end %>
-    <div><br/>
-      <%= gravatar_for @user%>
-      <a href=href="http://gravatar.com/emails">Changer</a>
-    </div>
-  </div>
+<%= form_for (@user) do |f| %>
+<%= render "fields", f: f%>
+<div class="action">
+  <%= f.submit "Mise à jour",class:"btn btn-primary"%></div>
+<% end %>
+<div><br/>
+  <%= gravatar_for @user%>
+  <%= link_gravatar%>
+</div>
+</div>
 </div>

@@ -188,7 +188,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   factory_girl_rails
   faker
-  gravatar_image_tag (~> 1.2)
+  gravatar_image_tag
   jbuilder (~> 2.0)
   jquery-rails
   protected_attributes
