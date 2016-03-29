@@ -36,6 +36,15 @@ module SessionsHelper
     self.current_user = nil
   end
 
+  def authenticate
+    deny_acces unless signed_in?
+    end
+
+  def deny_acces
+    store_location
+    redirect_to signup_path, notice: 'Merci de vous identifier pour rejoindre cette page'
+  end
+
   private
 
   def user_from_remember_token
