@@ -104,8 +104,8 @@ td.sidebar {
   border: 1px solid #999;
   margin-bottom: -15px;
 }
-div.field,
-div.actions {
+div.actions,
+div.field {
   margin-bottom: 10px;
 }
 // error message style
@@ -132,8 +132,6 @@ div.actions {
     border-bottom: 1px solid $gray-lighter;
   }
 }
-
-
 // microposts
 .microposts {
   list-style: none;
@@ -145,8 +143,8 @@ div.actions {
   .user {
     margin-top: 5em;
     padding-top: 0;
-  } 
-     .content {
+  }
+  .content {
     display: block;
     margin-left: 60px;
     img {
@@ -165,17 +163,57 @@ div.actions {
     margin-top: 5px;
   }
 }
-
 aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
   }
 }
-
 span.picture {
   margin-top: 10px;
   input {
     border: 0;
   }
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+.gravatar_edit {
+  margin-top: 15px;
+}
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+.users.follow {
+  padding: 0;
 }

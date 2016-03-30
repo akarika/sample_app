@@ -28,19 +28,22 @@ gem 'gravatar_image_tag'
 gem 'protected_attributes'
 # Use Unicorn as the app server
 # gem 'unicorn'
-gem 'capybara-webkit'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'rspec-rails'
-group :development do
-  gem 'faker'
+gem 'rake', '~> 10.4', '>= 10.4.2'
+gem 'faker'
+group :development, :test do
   gem 'rspec-rails'
   gem 'will_paginate'
-end
+  gem 'capybara-webkit'
+  gem 'bootstrap-will_paginate'
+  gem 'factory_girl_rails'
 
+
+end
 group :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem'byebug'
   gem'capybara'
-  gem 'factory_girl_rails'
 end
